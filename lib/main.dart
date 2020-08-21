@@ -17,23 +17,28 @@ class _WikipediaExplorerState extends State<WikipediaExplorer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      /*
       appBar: AppBar(
-        title: const Text('Wikipedia Explorer'),
+        title: const Text('News Buyback AppBar Title'),
         // This drop down menu demonstrates that Flutter widgets can be shown over the web view.
         actions: <Widget>[
           NavigationControls(_controller.future),
           Menu(_controller.future, () => _favorites),
         ],
       ),
+      */
       body: WebView(
-        initialUrl: 'https://en.wikipedia.org/wiki/Kraken',
-        onWebViewCreated: (WebViewController webViewController) {
-          _controller.complete(webViewController);
-        },
+        javaScriptMode: JavaScriptMode.unrestricted,
+        initialUrl: 'https://newsbuyback.com',
+        //onWebViewCreated: (WebViewController webViewController) {
+         // _controller.complete(webViewController);
+       // },
       ),
-      floatingActionButton: _bookmarkButton(),
+     // floatingActionButton: _bookmarkButton(),
     );
   }
+
+
 
   _bookmarkButton() {
     return FutureBuilder<WebViewController>(
@@ -118,6 +123,8 @@ class FavoritesPage extends StatelessWidget {
     );
   }
 }
+
+
 
 class NavigationControls extends StatelessWidget {
   const NavigationControls(this._webViewControllerFuture)
